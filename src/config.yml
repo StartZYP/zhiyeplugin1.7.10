@@ -1,0 +1,49 @@
+classes:
+  zykzz:
+    putong:
+      maxlevel: 5
+      skilldamage: "1500*1500+level"
+      skillrange: "20+level"
+      skillcd: "1+level"
+    yinji:
+      maxlevel: 5
+      skilldamage: "1500*1500+level"
+    leidian:
+      maxlevel: 5
+      skilldamage: "1500*1500+level"
+      skillrange: "20+level"
+      skillcd: "1+level"
+    dlzgb:
+      maxlevel: 5
+      skilldamage: "1500*1500+level"
+      skillrange: "20+level"
+      skillcd: "1+level"
+    slp:
+      maxlevel: 5
+      skilldamage: "1500*1500+level"
+      reducedamage: "0.8*level"
+      skillrange: "20+level"
+      skillcd: "1+level"
+  zylh:
+    putong:
+      maxlevel: 5
+      skilldamage: "1500*1500+level"
+      skillrange: "20+level"
+      skillcd: "1+level"
+    slzl:
+      maxlevel: 5
+      up: "1500*1500+level"
+    yhgh:
+      maxlevel: 5
+      addhealth: "1500*1500+level"
+      skillcd: "1+level"
+    jrp:
+      maxlevel: 5
+      skilldamage: "1500*1500+level"
+      skillrange: "20+level"
+      skillcd: "1+level"
+    lszh:
+      maxlevel: 5
+      skilldamage: "1500*1500+level"
+      skillrange: "20+level"
+      skillcd: "1+level"

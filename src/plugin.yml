@@ -1,0 +1,6 @@
+name: zy
+main: main.Main
+version: 1.0
+commands:
+  zy:
+  sx:

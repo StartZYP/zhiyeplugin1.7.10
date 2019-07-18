@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="属性插件">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/属性插件.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

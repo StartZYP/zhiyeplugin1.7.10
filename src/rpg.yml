@@ -1,0 +1,12 @@
+state:
+  damage: 'da'
+  denfense: 'de'
+  magic: 'ma'
+  damagespeed: 'ds'
+  health: 'h'
+  movespeed: 'ms'
+  zdl: 'zdl'
+  baoji: 'baoji'
+  baojidamage: 'baojidamage'
+zdl:
+  playername: 222
