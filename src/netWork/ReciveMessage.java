@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import main.Main;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -148,10 +150,12 @@ public class ReciveMessage implements PluginMessageListener {
         if(PlayerRedisData.getCareer(player.getName())==null)return;
         Career career=PlayerRedisData.getCareer(player.getName());
         if (career==null){
+            player.sendMessage("§e§l请先选择职业");
             return;
         }
         int id=jsonObject.get("id").getAsInt();
         Inventory inc=player.getInventory();
+        //ItemStack itemInHand = player.getItemInHand();
         boolean hasBook=false;
         for (int i=0;i<inc.getSize();i++) {
             if(inc.getItem(i)==null||inc.getItem(i).getType()== Material.AIR)continue;
@@ -161,7 +165,9 @@ public class ReciveMessage implements PluginMessageListener {
             int amount=inc.getItem(i).getAmount();
             List<String> lores=itemMeta.getLore();
             for (String skill:lores) {
-                if(skill.contains("["+career.skills[id].name+"]")){
+                String s = ChatColor.stripColor(skill);
+                //System.out.println(skill);
+                if(s.contains("["+career.skills[id].name+"]")&&s.contains(String.valueOf(career.skills[id].level+1))){
                     if(amount==1){
                         inc.setItem(i,new ItemStack(Material.AIR));
                         hasBook=true;
@@ -173,11 +179,11 @@ public class ReciveMessage implements PluginMessageListener {
                         hasBook=true;
                         break;
                     }
-
                 }
             }
         }
-        if(!hasBook&&!player.isOp()){
+        if(!hasBook){
+            player.sendMessage("§e§l你身上没有合适的技能书,需要"+career.skills[id].name+"等级"+career.skills[id].level);
             return;
         }
         if(career.skills[id].level<career.skills[id].getMaxlevel()){

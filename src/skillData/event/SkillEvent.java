@@ -17,10 +17,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import redis.PlayerRedisData;
 import skillerData.Career;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static redis.PlayerRedisData.playerCareerMap;
 
 public class SkillEvent implements Listener {
 
@@ -33,14 +29,14 @@ public class SkillEvent implements Listener {
                 SendMessge.sendRpgInfo(player);
             }
         }.runTaskTimer(Main.plugin,20l,40l);
-        if(PlayerRedisData.getCareer(player.getName())==null) return;
         String classname = Main.plugin.getConfig().getString("zhiyeinfo." + player.getName());
         if (classname==null){
                 return;
         }
         Gson gson = new Gson();
         Career career = gson.fromJson(classname, Career.class);
-        playerCareerMap.put(player.getName(),career);
+        System.out.println(career);
+        PlayerRedisData.playerCareerMap.put(player.getName(),career);
         new BukkitRunnable(){
             @Override
             public void run() {

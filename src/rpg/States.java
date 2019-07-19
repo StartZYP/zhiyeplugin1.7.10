@@ -316,7 +316,7 @@ public class States implements Listener, CommandExecutor {
                 baojidamage +=this.getBaojidamage(lore);
             }
 
-            System.out.println("战斗力" + zdl);
+            //System.out.println("战斗力" + zdl);
 
             return new TempAttr(damage, denfense, magic, damagespeed, health, movespeed, zdl,baoji,baojidamage);
         }
