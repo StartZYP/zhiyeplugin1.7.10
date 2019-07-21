@@ -29,7 +29,6 @@ public class Config {
             plugin.saveResource("rpg.yml",true);
             loc = new File(plugin.getDataFolder(), "rpg.yml");
         }
-
         config = YamlConfiguration.loadConfiguration(loc);
     }
 

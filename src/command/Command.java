@@ -3,8 +3,7 @@ package command;
 import ZhiYe.ZYKZZ;
 import ZhiYe.ZYNH;
 import com.google.gson.Gson;
-import main.Main;
-import main.SkillUtil;
+import config.ConfigData;
 import netWork.SendMessge;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,16 +20,15 @@ public class Command implements CommandExecutor {
                 if(PlayerRedisData.getCareer(player.getName())==null) {
                     PlayerRedisData.initCareer(player.getName(), ZYKZZ.instanceZykzz());
                     SendMessge.sendSkillInfo(player);
-                    Main.plugin.getConfig().set("zhiyeinfo."+player.getPlayer().getName(),gson.toJson(PlayerRedisData.getCareer(player.getName())));
-                    Main.plugin.saveConfig();
+                    player.sendMessage("§e§l成功选择职业");
+                    ConfigData.SavePlayerData(PlayerRedisData.getCareer(player.getName()),player);
                 }
             }else if(strings[0].equals("zylh")) {
                 if (PlayerRedisData.getCareer(player.getName()) == null) {
                     PlayerRedisData.initCareer(player.getName(), ZYNH.instanceZYNH());
                     SendMessge.sendSkillInfo(player);
                     player.sendMessage("§e§l成功选择职业");
-                    Main.plugin.getConfig().set("zhiyeinfo."+player.getPlayer().getName(),gson.toJson(PlayerRedisData.getCareer(player.getName())));
-                    Main.plugin.saveConfig();
+                    ConfigData.SavePlayerData(PlayerRedisData.getCareer(player.getName()),player);
                 }
             }
         }
