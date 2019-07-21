@@ -33,17 +33,14 @@ public class Skill {
         this.damage=damage;
     }
 
-    public int getDamage(){
-        return SkillUtil.getCaluteValue(damage.replace("level",String.valueOf(level)));
+    public int getDamage(double Damge,double Magic){
+        return SkillUtil.getCaluteValue(damage.replace("level",String.valueOf(level)).replace("Damage",String.valueOf(Damge)).replace("Magic",String.valueOf(Magic)));
     }
 
     public int getMaxlevel(){
         return maxlevel;
     }
 
-    public int getlastdamafe(){
-        return getDamage();
-    }
 
     public void setMaxlevel(int maxlevel){
         this.maxlevel=maxlevel;

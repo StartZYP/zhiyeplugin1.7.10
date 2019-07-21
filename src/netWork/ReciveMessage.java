@@ -17,6 +17,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import org.bukkit.scheduler.BukkitRunnable;
 import redis.PlayerRedisData;
+import rpg.Attr;
+import rpg.States;
 import skillData.SkillCoolDown;
 import skillData.event.SkillEvent;
 import skillerData.Career;
@@ -77,7 +79,8 @@ public class ReciveMessage implements PluginMessageListener {
             int entityid = jsonObject.get("entityid").getAsInt();
             LivingEntity vic = getEntity(entityid, player.getWorld().getLivingEntities());
             if(vic!=null){
-                vic.damage(PlayerRedisData.getCareer(player.getName()).skills[id].getDamage());
+                Attr attr = States.playerAttr.get(player.getName());
+                vic.damage(PlayerRedisData.getCareer(player.getName()).skills[id].getDamage(attr.getDamage(),attr.getMagic()));
             }
         }else if(id==4)
         {
@@ -89,8 +92,9 @@ public class ReciveMessage implements PluginMessageListener {
                 entities.add(e.getAsInt());
             }
             List<LivingEntity> livingEntities=getEntities(entities,player.getWorld().getLivingEntities());
+            Attr attr = States.playerAttr.get(player.getName());
             for (LivingEntity livingEntity:livingEntities) {
-                livingEntity.damage(PlayerRedisData.getCareer(player.getName()).skills[id].getDamage());
+                livingEntity.damage(PlayerRedisData.getCareer(player.getName()).skills[id].getDamage(attr.getDamage(),attr.getMagic()));
             }
         }
         //System.out.println(jsonObject.toString());
