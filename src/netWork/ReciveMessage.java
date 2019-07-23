@@ -57,7 +57,6 @@ public class ReciveMessage implements PluginMessageListener {
         System.out.println("开始执行技能"+id);
 
         if(PlayerRedisData.getCareer(player.getName())==null)return;
-        System.out.println("有职业");
         SkillCoolDown skillCoolDown;
         if (playerSkillCoolDownMap.get(player)==null) {
             skillCoolDown = new SkillCoolDown();
@@ -73,7 +72,7 @@ public class ReciveMessage implements PluginMessageListener {
         }
         skillCoolDown.cd[id]=Calendar.getInstance().getTimeInMillis();
 
-        System.out.println("可以释放");
+        //System.out.println("可以释放");
 
         if(id!=4) {
             int entityid = jsonObject.get("entityid").getAsInt();
@@ -82,7 +81,8 @@ public class ReciveMessage implements PluginMessageListener {
                 Attr attr = States.playerAttr.get(player.getName());
                 vic.damage(PlayerRedisData.getCareer(player.getName()).skills[id].getDamage(attr.getDamage(),attr.getMagic()));
             }
-        }else if(id==4)
+        }
+        else if(id==4)
         {
             JsonArray entityid = jsonObject.get("entityid").getAsJsonArray();
             List<Integer> entities=new ArrayList<>();
@@ -110,7 +110,7 @@ public class ReciveMessage implements PluginMessageListener {
                     SendMessge.sendAllPlayer(player,0,id,Integer.valueOf("3"));
                     break;
                 case 4:
-                    PlayerRedisData.getCareer(player.getName()).skills[4].doskill(player);
+                    //PlayerRedisData.getCareer(player.getName()).skills[4].doskill(player);
 //                    SkillEvent.playerBooleanMap.put(player,true);
 //
 //                    new BukkitRunnable(){
@@ -132,15 +132,15 @@ public class ReciveMessage implements PluginMessageListener {
                     SendMessge.sendAllPlayer(player,1,id,Integer.valueOf("6"));
                     break;
                 case 3:
-                    int entityid = jsonObject.get("entityid").getAsInt();
-                    LivingEntity vic = getEntity(entityid, player.getWorld().getLivingEntities());
-                    PlayerRedisData.getCareer(player.getName()).skills[3].doskill(player,vic);
+                   // int entityid = jsonObject.get("entityid").getAsInt();
+                    //LivingEntity vic = getEntity(entityid, player.getWorld().getLivingEntities());
+                    //PlayerRedisData.getCareer(player.getName()).skills[3].doskill(player,vic);
                     SendMessge.sendAllPlayer(player,1,id,Integer.valueOf("7"));
                     break;
                 case 4:
-                    int vicid = jsonObject.get("entityid").getAsInt();
-                    LivingEntity vicc = getEntity(vicid, player.getWorld().getLivingEntities());
-                    PlayerRedisData.getCareer(player.getName()).skills[4].doskill(player,vicc);
+                    //int vicid = jsonObject.get("entityid").getAsInt();
+                    //LivingEntity vicc = getEntity(vicid, player.getWorld().getLivingEntities());
+                    //PlayerRedisData.getCareer(player.getName()).skills[4].doskill(player,vicc);
                     SendMessge.sendAllPlayer(player,1,id,Integer.valueOf("8"));
                     break;
             }

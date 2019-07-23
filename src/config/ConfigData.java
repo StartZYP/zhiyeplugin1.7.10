@@ -57,7 +57,11 @@ public class ConfigData {
             career= ZYNH.instanceZYNH();
         }
         for (int i=0;i<=4;i++){
-            career.skills[i].level = Integer.parseInt(PlayerDataArray[i+1]);
+            if (Integer.parseInt(PlayerDataArray[i+1])!=0){
+                career.skills[i].learn =true;
+                career.skills[i].level = Integer.parseInt(PlayerDataArray[i+1]);
+            }
+
         }
         try {
             data.save(new File(Main.plugin.getDataFolder(), "data.yml"));
